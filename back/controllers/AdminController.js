@@ -21,6 +21,7 @@ const registro_admin = async function (req,res){
                 data.password = hash;
                 var reg = await Admin.create(data);
                 res.status(200).send({data:reg});
+                
             }else{
                 res.status(200).send({message:'Error server',data:undefined});
             }
@@ -58,7 +59,7 @@ const login_admin = async function(req,res){
                     token: jwt.createtoken(user)});
                 console.log(user);
             }else{
-                res.status(200).send({message: 'La contraseña no coincide', data: undefined});
+                res.status(200).send({message: 'La contraseña no es valida', data: undefined});
             }
         });
     }
