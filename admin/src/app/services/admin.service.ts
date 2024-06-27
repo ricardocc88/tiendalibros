@@ -28,29 +28,29 @@ export class AdminService {
    }
 
    public isAuthenticated(allowRoles : string[]):boolean{
- 
+
     const token = localStorage.getItem('token');
- 
+    
     if(!token){
       return false;
     }
-    
-    try {
-      const helper = new JwtHelperService();
-      var decodedToken = helper.decodeToken(<any>token);   
-      
-      console.log(decodedToken);
-      
-      if(!decodedToken){
-        console.log('No es valido');
-        localStorage.removeItem('token');
-        return false;
-      }
-    } catch (error) {
+   
+   try {
+    const helper = new JwtHelperService();
+    const decodedToken = helper.decodeToken(<any>token);
+
+    console.log(decodedToken);
+
+    if(!decodedToken){
+      console.log('No acceso');
       localStorage.removeItem('token');
       return false;
     }
- 
-    return allowRoles.includes(decodedToken['role']);
-  }
+    
+   } catch (error) {
+    localStorage.removeItem('token');
+    return false;
+   }
+   return true;
+}
 }

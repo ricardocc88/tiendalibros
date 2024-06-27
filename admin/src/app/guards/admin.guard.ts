@@ -1,8 +1,8 @@
+import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AdminService } from "src/app/services/admin.service";
 import { Router } from '@angular/router';
-import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ constructor(
  
 }
   canActivate():any{
-   if(!this._adminService.isAuthenticated(['admin'])){
+   if(!this._adminService.isAuthenticated([])){
     this._router.navigate(['login']);
     return false;
    }

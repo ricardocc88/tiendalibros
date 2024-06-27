@@ -11,7 +11,7 @@ const appRoute : Routes =[
     {path:'login',component: LoginComponent},
 
     {path: 'panel', children:[
-        {path: 'clientes', component:IndexClienteComponent, canActivate: [AdminGuard]}
+        {path: 'clientes', component: IndexClienteComponent, canActivate: [AdminGuard]}
     ]},
     
 ]
