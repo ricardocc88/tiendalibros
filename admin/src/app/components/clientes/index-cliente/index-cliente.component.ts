@@ -8,6 +8,8 @@ import { ClienteService } from 'src/app/services/cliente.service';
 })
 export class IndexClienteComponent implements OnInit {
 
+  public clientes : Array<any>=[];
+
   constructor(
     private _clienteService : ClienteService
   ) { }
@@ -15,6 +17,9 @@ export class IndexClienteComponent implements OnInit {
   ngOnInit(): void {
     this._clienteService.listar_clientes_filtro_admin().subscribe(
       response=>{
+        
+        this.clientes = response.data;
+
         console.log(response);
       },
       error=>{
