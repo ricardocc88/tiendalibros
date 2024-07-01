@@ -13,20 +13,24 @@
   </div>
   <div class="card-header">
     <form class="form-inline pt-2">
-      <label class="sr-only" for="inline-form-input-name">Apellidos</label>
-      <input class="form-control mb-3 mr-sm-4" name= "filtro_apellidos" [(ngModel)]="filtro_apellidos" (keyup)="filtro('apellidos')" type="text" id="inline-form-input-name" placeholder="Apellidos">
-      <label class="sr-only" for="inline-form-input-username">Correo</label>
+      <label class="sr-only" for="inline-form-input-nombre">Nombres</label>
+      <input class="form-control mb-3 mr-sm-4" name="filtro_nombres" [(ngModel)]="filtro_nombres" (keyup)="filtro('nombres')" type="text" id="inline-form-input-nombre" placeholder="Nombres">
+      
+      <label class="sr-only" for="inline-form-input-apellidos">Apellidos</label>
+      <input class="form-control mb-3 mr-sm-4" name="filtro_apellidos" [(ngModel)]="filtro_apellidos" (keyup)="filtro('apellidos')" type="text" id="inline-form-input-apellidos" placeholder="Apellidos">
+      
+      <label class="sr-only" for="inline-form-input-correo">Correo</label>
       <div class="input-group mb-3 mr-sm-4">
         <div class="input-group-prepend">
           <div class="input-group-text">@</div>
         </div>
-        <input class="form-control" name="filtro_correo" [(ngModel)]="filtro_correo" (keyup)="filtro('correo')"type="text" id="inline-form-input-username" placeholder="Correo">
+        <input class="form-control" name="filtro_correo" [(ngModel)]="filtro_correo" (keyup)="filtro('correo')" type="text" id="inline-form-input-correo" placeholder="Correo">
       </div>
     </form>
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered">
+      <table class="table table-bordered text-center">
         <thead class="thead-dark">
           <tr>
             <th>#</th>

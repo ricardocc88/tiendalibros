@@ -12,7 +12,7 @@ export class IndexClienteComponent implements OnInit {
   public clientes : Array<any>=[];
   public filtro_apellidos = '';
   public filtro_correo = '';
-  public filtro_nombre = '';
+  public filtro_nombres = '';
 
   constructor(
     private _clienteService : ClienteService
@@ -38,7 +38,7 @@ export class IndexClienteComponent implements OnInit {
   filtro(tipo: any){
 
     console.log(tipo);
-    console.log(this.filtro_nombre);
+    console.log(this.filtro_nombres);
     console.log(this.filtro_apellidos);
     console.log(this.filtro_correo);
     
@@ -60,10 +60,20 @@ export class IndexClienteComponent implements OnInit {
           this.clientes = response.data;
           console.log(this.clientes);
         },error=>{
-          console.log(this.clientes);
+          console.log(error);
         }
       );
-    }else{
+    }else if(tipo == 'nombres'){
+      this._clienteService.listar_clientes_filtro_admin(tipo, this.filtro_nombres).subscribe(
+        response=>{
+          this.clientes = response.data;
+          console.log(this.clientes);
+        },error =>{
+          console.log(error);
+        }
+      )
+    }
+    else{
       this.init_Data();
     }
 

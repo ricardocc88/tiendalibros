@@ -72,11 +72,14 @@ const listar_clientes_filtro_admin =  async function(req,res){
         res.status(200).send({data:reg});
     }else{
         //filtro
-        if(tipo == 'apellidos'){
-            let reg = await Cliente.find({apellidos: new RegExp(filtro, 'i')})
+        if(tipo == 'nombres'){
+            let reg = await Cliente.find({nombres: new RegExp(filtro, 'i')})
+            res.status(200).send({data:reg});
+        }else if(tipo == 'apellidos'){
+            let reg = await Cliente.find({apellidos: new RegExp(filtro,'i')});
             res.status(200).send({data:reg});
         }else if(tipo == 'correo'){
-            let reg = await Cliente.find({email: new RegExp(filtro,'i')});
+            let reg = await Cliente.find({email: new RegExp(filtro, 'i')})
             res.status(200).send({data:reg});
         }
     }
