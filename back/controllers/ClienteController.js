@@ -48,11 +48,10 @@ const login_cliente = async function(req,res){
         
         bcrypt.compare(data.password, user.password, async function(error,check){
             if(check){
-               //    if(user.password == data.email){ 
                 res.status(200).send({
                     data:user,
                     token: jwt.createtoken(user)});
-                console.log(user);
+                console.log(user);;
             }else{
                 res.status(200).send({message: 'La contraseña no coincide', data: undefined});
             }
@@ -60,13 +59,33 @@ const login_cliente = async function(req,res){
     }
     
 }
+
 const listar_clientes_filtro_admin =  async function(req,res){
-    let reg = await Cliente.find();
-    res.status(200).send({data:reg});
+
+    let tipo = req.params['tipo'];
+    let filtro = req.params['filtro'];
+
+    console.log(tipo);
+    console.log(filtro);
+    if(tipo == null || tipo == 'null'){
+        let reg = await Cliente.find();
+        res.status(200).send({data:reg});
+    }else{
+        //filtro
+        if(tipo == 'apellidos'){
+            let reg = await Cliente.find({apellidos: new RegExp(filtro, 'i')})
+            res.status(200).send({data:reg});
+        }else if(tipo == 'correo'){
+            let reg = await Cliente.find({email: new RegExp(filtro,'i')});
+            res.status(200).send({data:reg});
+        }
+    }
+    
 }
+
+
 module.exports = {
     registro_cliente,
     login_cliente,
     listar_clientes_filtro_admin
-
 }
