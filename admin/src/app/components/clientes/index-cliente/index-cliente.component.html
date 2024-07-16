@@ -9,7 +9,7 @@
 
 <div class="card box-shadow-sm">
   <div class="card-header">
-    <h5 style="margin-bottom: 0px;">Filtro de clientes</h5>
+    <h5 class="custom-filter-title" style="margin-bottom: 0px;">Filtro de clientes</h5>
   </div>
   <div class="card-header">
     <form class="form-inline pt-2">
@@ -63,11 +63,7 @@
     </div>
   </div>
   <div class="card-footer">
-    <ngb-pagination [(page)]="page"
-    [pageSize]="pageSize"
-    [collectionSize]="clientes.length">
-      
+    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="clientes.length">
     </ngb-pagination>
-
-  
+  </div>
 </div>
