@@ -15,7 +15,7 @@ export class IndexClienteComponent implements OnInit {
   public filtro_nombres = '';
 
   public page = 1;
-  public pageSize = 1;
+  public pageSize = 10;
   public token;
 
   constructor(
@@ -30,9 +30,10 @@ export class IndexClienteComponent implements OnInit {
     this.init_Data();
   }
 
-  init_Data(): void {
+  init_Data() {
     this._clienteService.listar_clientes_filtro_admin(null, null, this.token).subscribe(
       response => {
+
         this.clientes = response.data;
         console.log(this.clientes);
       },
